@@ -1,0 +1,12 @@
+.header {
+    text-align: center;
+    text-decoration:wavy ;
+    position: relative;
+    padding: 25px 10px 35px;
+    margin: 0;
+}
+
+.glow {
+    font-size: 2.5rem;
+    background: lightskyblue;
+}
