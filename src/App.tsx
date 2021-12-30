@@ -1,8 +1,5 @@
 import React from 'react';
-
-export function Game() {
-    return <label>game</label>;
-}
+import { Game } from './Game';
 
 function App() {
     return (
