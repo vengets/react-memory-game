@@ -1,5 +1,6 @@
 import React from 'react';
+import { Heading } from './Heading';
 
 export function Game() {
-    return <label>game</label>;
+    return <Heading title="Memory-Game" />;
 }
