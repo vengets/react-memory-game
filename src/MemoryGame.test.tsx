@@ -41,5 +41,8 @@ test('Should render grid with 16 image elements', () => {
     for (let i = 1; i <= 16; i++) {
         let imageElement = screen.getByTestId(i);
         expect(imageElement).toBeInTheDocument();
+        expect(imageElement.getAttribute('src')).toContain('blank.webp');
+        expect(imageElement.getAttribute('width')).toEqual('100px');
+        expect(imageElement.getAttribute('height')).toContain('100px');
     }
 });
