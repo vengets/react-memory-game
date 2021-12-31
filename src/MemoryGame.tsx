@@ -19,11 +19,19 @@ export function Score() {
     );
 }
 
+export function Grid() {
+    return (
+        <>
+            <div className="grid"></div>
+        </>
+    );
+}
+
 export function MemoryGame() {
     return (
         <>
             <Score />
-            <div className="grid"></div>
+            <Grid />
         </>
     );
 }
