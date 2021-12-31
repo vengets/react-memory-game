@@ -29,3 +29,9 @@ test('MemoryGame should contain Attempts element', () => {
     const attemptsTextElement = screen.getByTestId('attempts');
     expect(attemptsTextElement).toBeInTheDocument();
 });
+
+test('MemoryGame should contain Matches element', () => {
+    const { container } = render(<MemoryGame />);
+    const matchesTextElement = screen.getByTestId('matches');
+    expect(matchesTextElement).toBeInTheDocument();
+});
