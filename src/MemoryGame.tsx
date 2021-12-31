@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './MemoryGame.css';
 export function Score() {
     return (
         <div className="score">
@@ -20,9 +20,18 @@ export function Score() {
 }
 
 export function Grid() {
+    const boxCount = 16;
+    let images = [];
+
+    for (let i = 1; i <= boxCount; i++) {
+        images.push(
+            <img src="" data-testid={i} key={i} width="100px" height="100px" />
+        );
+    }
+
     return (
         <>
-            <div className="grid"></div>
+            <div className="grid">{images}</div>
         </>
     );
 }
