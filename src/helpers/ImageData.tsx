@@ -45,5 +45,10 @@ export function getImageData(): ImageData[] {
         },
     ];
 
+    data = duplicateImageData(data);
     return data;
+}
+
+function duplicateImageData(data: ImageData[]) {
+    return data.concat(data);
 }
