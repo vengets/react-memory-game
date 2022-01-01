@@ -1,53 +1,57 @@
 import React from 'react';
 import './MemoryGame.css';
 import blankImage from './images/blank.webp';
+import { Score } from './Score';
 
-export function Score() {
-    return (
-        <div className="score">
-            <h1>
-                Matches:
-                <span id="matches" data-testid="matches">
-                    0
-                </span>
-            </h1>
-            <h1>
-                Attempts:
-                <span id="attempts" data-testid="attempts">
-                    0
-                </span>
-            </h1>
-        </div>
-    );
-}
+let selectedCards: any[];
 
-export function Grid() {
-    const boxCount = 16;
-    let images = [];
+interface GridProps {}
 
-    for (let i = 1; i <= boxCount; i++) {
-        images.push(
-            <img
-                src={blankImage}
-                data-testid={i}
-                key={i}
-                width="100px"
-                height="100px"
-            />
-        );
+class Grid extends React.Component {
+    constructor(props: GridProps) {
+        super(props);
+        selectedCards = [];
     }
 
-    return (
-        <>
-            <div className="grid">{images}</div>
-        </>
-    );
+    gridClicked(cardId: number, e: React.MouseEvent<HTMLImageElement>) {
+        if (selectedCards.length == 1 && selectedCards[0] == cardId) {
+            return;
+        }
+        let image = document.getElementById(cardId.toString());
+        console.log(image);
+        if (image) image.setAttribute('src', '');
+    }
+
+    render() {
+        const boxCount = 16;
+        let images = [];
+
+        for (let i = 1; i <= boxCount; i++) {
+            images.push(
+                <img
+                    src={blankImage}
+                    data-testid={i}
+                    id={i.toString()}
+                    key={i}
+                    width="100px"
+                    height="100px"
+                    onClick={(e) => this.gridClicked(i, e)}
+                />
+            );
+        }
+
+        return (
+            <>
+                <Score />
+                <div className="grid">{images}</div>
+            </>
+        );
+    }
 }
 
 export function MemoryGame() {
     return (
         <>
-            <Score />
             <Grid />
         </>
     );
