@@ -10,7 +10,7 @@ test('Should return ImageData after shuffling', () => {
     let result2 = getImageData();
     let shuffled = false;
     result1.map((data, i) => {
-        if (result2[i].name !== data.name) shuffled = true;
+        if (result2[i].id !== data.id) shuffled = true;
     });
     expect(shuffled).toBeTruthy();
 });

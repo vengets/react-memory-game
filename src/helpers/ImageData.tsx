@@ -7,40 +7,40 @@ import i6 from '../images/6.png';
 import i7 from '../images/7.jpeg';
 import i8 from '../images/8.jpeg';
 
-export type ImageData = { name: string; img: string };
+export type ImageData = { id: string; img: string };
 
 export function getImageData(): ImageData[] {
     let data = [
         {
-            name: '1',
+            id: '1',
             img: i1,
         },
         {
-            name: '2',
+            id: '2',
             img: i2,
         },
         {
-            name: '3',
+            id: '3',
             img: i3,
         },
         {
-            name: '4',
+            id: '4',
             img: i4,
         },
         {
-            name: '5',
+            id: '5',
             img: i5,
         },
         {
-            name: '6',
+            id: '6',
             img: i6,
         },
         {
-            name: '7',
+            id: '7',
             img: i7,
         },
         {
-            name: '8',
+            id: '8',
             img: i8,
         },
     ];
@@ -59,6 +59,5 @@ function shuffle(array: ImageData[], len = array.length) {
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-
     return array.slice(0, len);
 }

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Heading, HeadingProp } from './Heading';
+import { Heading } from './Heading';
+import { HeadingProp } from './types/Heading';
 
 test('Heading should render title correctly', () => {
     const Headingprop: HeadingProp = { title: 'test' };
