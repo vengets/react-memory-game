@@ -1,0 +1,10 @@
+.loginButton {
+}
+
+.loginHeaderMain {
+    margin: 20px 20px;
+    display: flex;
+    flex-direction: row;
+    place-content: space-evenly;
+    flex-wrap: nowrap;
+}

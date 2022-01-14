@@ -4,9 +4,13 @@
     position: relative;
     padding: 25px 10px 35px;
     margin: 0;
+    width: 100%;
+    font-size: 2.5rem;
 }
 
-.glow {
-    font-size: 2.5rem;
+.main {
+    display: flex;
+    flex-direction: row;
     background: lightskyblue;
+    align-items: stretch
 }
