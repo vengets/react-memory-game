@@ -22,7 +22,7 @@ function LoginHeader() {
             : undefined
     );
 
-    function loginfailed() {
+    function loginFailed() {
         alert('[ Login failed ]');
     }
 
@@ -30,8 +30,9 @@ function LoginHeader() {
         data: GoogleLoginResponse | GoogleLoginResponseOffline
     ) {
         if ('tokenId' in data) {
-            setLoginData(JSON.stringify(data));
+            setLoginData(JSON.stringify(data.profileObj));
             localStorage.setItem('loginData', JSON.stringify(data.profileObj));
+            loggedIn();
         }
     }
 
@@ -61,9 +62,9 @@ function LoginHeader() {
                 <>
                     <GoogleLogin
                         className="loginButton"
-                        clientId={process.env.CLIENT_ID as string}
+                        clientId="643013230576-vttmopqtfrakm3f57dump5cqjem3g2bj.apps.googleusercontent.com"
                         buttonText="Login with Google"
-                        onFailure={loginfailed}
+                        onFailure={loginFailed}
                         onSuccess={loginSuccess}
                         cookiePolicy={'single_host_origin'}
                     ></GoogleLogin>
