@@ -2,6 +2,7 @@ import blankImage from './images/blank.webp';
 import React, { useEffect, useState } from 'react';
 import { getImageData } from './helpers/ImageData';
 import { ScoreRecord } from './types/ScoreRecord';
+import Confetti from './Confetti';
 let cards = getImageData();
 let selectedCards: any[];
 
@@ -14,6 +15,7 @@ export function Grid(props: {
     let images = [];
     let [match, setMatch] = useState(0);
     let [attempt, setAttempt] = useState(0);
+    let [won, setWon] = useState(false);
     for (let i = 1; i <= boxCount; i++) {
         images.push(
             <img
@@ -24,7 +26,15 @@ export function Grid(props: {
                 width="100px"
                 height="100px"
                 onClick={(e) =>
-                    gridClicked(i, e, match, attempt, setMatch, setAttempt)
+                    gridClicked(
+                        i,
+                        e,
+                        match,
+                        attempt,
+                        setMatch,
+                        setAttempt,
+                        setWon
+                    )
                 }
             />
         );
@@ -41,6 +51,7 @@ export function Grid(props: {
     return (
         <>
             <div className="grid">{images}</div>
+            {won ? <Confetti enable={true} /> : ''}
         </>
     );
 }
@@ -51,7 +62,8 @@ function gridClicked(
     match: number,
     attempt: number,
     setMatch: (m: number) => void,
-    setAttempt: (a: number) => void
+    setAttempt: (a: number) => void,
+    setWon: (a: boolean) => void
 ) {
     if (selectedCards.length == 1 && selectedCards[0] == cardId) {
         return;
@@ -82,7 +94,7 @@ function gridClicked(
             attempt = attempt + 1;
             setAttempt(attempt);
             selectedCards = [];
-            refreshScore(match);
+            refreshScore(match, setWon);
         }
     }, 400);
 }
@@ -107,8 +119,9 @@ function emptySelectedCards() {
     }
 }
 
-function refreshScore(match: number) {
+function refreshScore(match: number, setWon: (a: boolean) => void) {
     if (match == 8) {
+        setWon(true);
         alert('YOU WIN !!!');
     }
 }
